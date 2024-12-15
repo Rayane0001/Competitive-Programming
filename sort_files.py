@@ -12,7 +12,6 @@ def extract_tags_and_todos(filepath):
 
     Returns:
         - tags (set): Les catégories du fichier.
-        - todos (list): Les lignes TODO du fichier.
     """
     tags = set()
     with open(filepath, "r", encoding="utf-8") as f:
@@ -37,6 +36,17 @@ for filename in sorted(os.listdir(source_dir)):
         for tag in tags:
             tags_dict[tag].append(filename)
 
+        # Classe les fichiers dans des dossiers A-Z
+        first_letter = filename[0].upper()
+        if not first_letter.isalpha():
+            first_letter = "Misc"  # Dossier pour fichiers qui ne commencent pas par une lettre
+
+        dest_dir = os.path.join(source_dir, first_letter)
+        os.makedirs(dest_dir, exist_ok=True)  # Crée le dossier s'il n'existe pas
+
+        dest_path = os.path.join(dest_dir, filename)
+        os.rename(filepath, dest_path)  # Déplace le fichier dans le bon dossier
+
 # Génère le tableau Markdown
 with open(output_file, "w", encoding="utf-8") as f:
     # En-tête du tableau
@@ -49,3 +59,4 @@ with open(output_file, "w", encoding="utf-8") as f:
         f.write(f"| {tag:<16} | {file_list} |\n")
 
 print(f"Tableau des tags généré dans {output_file} !")
+print("Fichiers triés par dossiers A-Z dans le répertoire Codeforces.")
