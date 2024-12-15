@@ -1,3 +1,5 @@
+# tags: implementation
+
 n = int(input().strip())
 s = input().strip()
 

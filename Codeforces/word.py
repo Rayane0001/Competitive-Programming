@@ -1,3 +1,5 @@
+# tags: implementation, strings
+
 word = input().strip()
 
 lowercases = sum(1 for c in word if c.islower())

@@ -1,3 +1,5 @@
+# tags: brute force, greedy
+
 n = int(input())
 nb_solutions = 0
 

@@ -1,7 +1,7 @@
-# Read input values
+# tags: brute force, implementation, math
+
 k, n, w = map(int, input().strip().split())
 
-# Calculate the total cost of w bananas
 total_cost = k * w * (w + 1) // 2
 
 borrow = total_cost - n

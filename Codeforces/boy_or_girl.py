@@ -1,3 +1,5 @@
+# tags: brute force, implementation, strings
+
 username = input().strip()
 unique_chars = set(username)
 

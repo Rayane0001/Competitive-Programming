@@ -1,3 +1,5 @@
+# tags: greedy, implementation, sortings, strings
+
 # TODO : à refaire
 
 s = input().strip()

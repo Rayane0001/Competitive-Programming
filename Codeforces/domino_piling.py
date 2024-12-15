@@ -1,3 +1,5 @@
+# tags: greedy, math
+
 m, n = map(int, input().split())
 
 dominos = n*m // 2

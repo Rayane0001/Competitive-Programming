@@ -1,3 +1,5 @@
+# tags: implementation, strings
+
 line1 = input().strip().lower()
 line2 = input().strip().lower()
 

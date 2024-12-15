@@ -1,3 +1,5 @@
+# tags: implementation
+
 a, b = map(int, input().split())
 
 year = 0

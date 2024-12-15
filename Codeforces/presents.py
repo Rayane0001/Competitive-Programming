@@ -1,3 +1,5 @@
+# tags: implementation
+
 n = int(input())
 gift = list(map(int, input().split()))
 result = [0] * n

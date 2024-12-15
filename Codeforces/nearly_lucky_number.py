@@ -1,3 +1,5 @@
+# tags: implementation
+
 # TODO : à refaire
 number = input().strip()
 

@@ -1,3 +1,5 @@
+# tags: brute force
+
 # TODO : à refaire
 
 def distinct_digits(year):

@@ -1,3 +1,5 @@
+# tags: implementation, strings
+
 word1 = input().strip()
 word2 = input().strip()
 

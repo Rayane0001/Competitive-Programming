@@ -1,3 +1,5 @@
+# tags: implementation, strings
+
 from collections import Counter
 
 n = int(input())

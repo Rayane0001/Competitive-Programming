@@ -1,3 +1,5 @@
+# tags: implementation
+
 x = 0
 statements = int(input())
 

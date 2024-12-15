@@ -1,3 +1,5 @@
+# tags: brute force, implementation, math, number theory
+
 # TODO : à refaire (1200)
 t = int(input().strip())
 results = []

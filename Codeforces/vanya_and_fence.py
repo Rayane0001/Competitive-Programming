@@ -1,3 +1,5 @@
+# tags: implementation
+
 n, h = map(int, input().split())
 width = n
 heights = list(map(int, input().split()))
