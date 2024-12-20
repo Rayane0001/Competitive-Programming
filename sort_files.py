@@ -25,27 +25,31 @@ def extract_tags_and_todos(filepath):
 # Organise les fichiers par tags
 tags_dict = defaultdict(list)
 
-for filename in sorted(os.listdir(source_dir)):
-    if filename.endswith(".py"):
-        filepath = os.path.join(source_dir, filename)
+# Parcourt les dossiers A-Z et les fichiers directement dans Codeforces
+for root, _, files in os.walk(source_dir):
+    for filename in sorted(files):
+        if filename.endswith(".py"):
+            filepath = os.path.join(root, filename)
 
-        # Récupère les tags
-        tags = extract_tags_and_todos(filepath)
+            # Récupère les tags
+            tags = extract_tags_and_todos(filepath)
 
-        # Associe chaque fichier à ses tags
-        for tag in tags:
-            tags_dict[tag].append(filename)
+            # Associe chaque fichier à ses tags
+            for tag in tags:
+                relative_path = os.path.relpath(filepath, source_dir)
+                tags_dict[tag].append(relative_path)
 
-        # Classe les fichiers dans des dossiers A-Z
-        first_letter = filename[0].upper()
-        if not first_letter.isalpha():
-            first_letter = "Misc"  # Dossier pour fichiers qui ne commencent pas par une lettre
+            # Classe les fichiers dans des dossiers A-Z
+            first_letter = filename[0].upper()
+            if not first_letter.isalpha():
+                first_letter = "Misc"  # Dossier pour fichiers qui ne commencent pas par une lettre
 
-        dest_dir = os.path.join(source_dir, first_letter)
-        os.makedirs(dest_dir, exist_ok=True)  # Crée le dossier s'il n'existe pas
+            dest_dir = os.path.join(source_dir, first_letter)
+            os.makedirs(dest_dir, exist_ok=True)  # Crée le dossier s'il n'existe pas
 
-        dest_path = os.path.join(dest_dir, filename)
-        os.rename(filepath, dest_path)  # Déplace le fichier dans le bon dossier
+            dest_path = os.path.join(dest_dir, filename)
+            if filepath != dest_path:
+                os.rename(filepath, dest_path)  # Déplace le fichier dans le bon dossier
 
 # Génère le tableau Markdown
 with open(output_file, "w", encoding="utf-8") as f:
