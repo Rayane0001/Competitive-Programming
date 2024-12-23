@@ -1,3 +1,4 @@
+# tags : implementation, strings
 n = int(input())
 string = input().strip().lower()
 
