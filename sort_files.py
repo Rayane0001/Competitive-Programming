@@ -26,7 +26,11 @@ def extract_tags_and_todos(filepath):
 tags_dict = defaultdict(list)
 
 # Parcourt les dossiers A-Z et les fichiers directement dans Codeforces
-for root, _, files in os.walk(source_dir):
+for root, dirs, files in os.walk(source_dir):
+    # Filtrer les dossiers pour ne garder que ceux commençant par A-Z
+    if root == source_dir:
+        dirs[:] = [d for d in dirs if len(d) == 1 and d.isalpha() and d.isupper()]
+
     for filename in sorted(files):
         if filename.endswith(".py"):
             filepath = os.path.join(root, filename)
