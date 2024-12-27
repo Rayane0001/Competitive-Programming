@@ -9,19 +9,21 @@
 		{"id":"92d393e1512c635d","type":"text","text":"Verify if its too big compared to the tolerance k","x":302,"y":-249,"width":278,"height":55},
 		{"id":"0f6a8ab051df26bf","type":"text","text":"desired_size[i] + k < size[j]\nOR\ndesired_size[i]<size[j]−k","x":329,"y":-93,"width":271,"height":113},
 		{"id":"e5a9d376db81aa9b","type":"text","text":".sort()","x":-585,"y":-384,"width":250,"height":60},
-		{"id":"cdf766d22d559045","x":-284,"y":-426,"width":250,"height":60,"type":"text","text":"DSU with Bisect (import bisect, sys) --> very fast\n"},
-		{"id":"64f4b54605b71f60","x":-284,"y":-540,"width":250,"height":60,"type":"text","text":"Initialisation"},
-		{"id":"e3268483b8c6c5cb","x":95,"y":-540,"width":250,"height":60,"type":"text","text":"sorted(list(map(int, input().split())))"},
-		{"id":"d8434d7de18cf6a7","x":-671,"y":-570,"width":260,"height":60,"type":"text","text":"parent = list(range(n+1))"},
-		{"id":"31841aefdcc07a78","x":-722,"y":-490,"width":311,"height":60,"type":"text","text":"sys.setrecursionlimit(3 * 10**5)"},
-		{"id":"cd9980a84a39e6a9","x":-940,"y":-575,"width":186,"height":60,"type":"text","text":"List of parents for union-find"},
-		{"id":"9dfe844ddb65dd6b","x":-231,"y":-660,"width":145,"height":53,"type":"text","text":"getpar(u)"},
-		{"id":"2f51ddb81da20824","x":-603,"y":-691,"width":250,"height":60,"type":"text","text":"Returns the root parent of a node u"},
-		{"id":"205da1efa8935975","x":69,"y":-763,"width":210,"height":206,"type":"text","text":"def getpar(u):  \n    if u < 0 or u == parent[u]:  \n        return u  \n    parent[u] = getpar(parent[u])  \n    return parent[u]"},
-		{"id":"e9d57b1ac108cbd3","x":-337,"y":-920,"width":251,"height":165,"type":"text","text":"Used when we need to removed the already-used elements (for example when a ticket has been taken)"},
-		{"id":"48414fd2babf9310","x":-556,"y":-63,"width":250,"height":60,"type":"text","text":"defaultdict --> very fast"},
-		{"id":"88ce75f4b1679a56","x":-556,"y":80,"width":250,"height":60,"type":"text","text":"default values for inexistant keys"},
-		{"id":"bb80743aee6c7ec8","x":-880,"y":107,"width":219,"height":133,"type":"text","text":"Example : when a customer comes, the value is +1 and if he goes out it's -1"}
+		{"id":"cdf766d22d559045","type":"text","text":"DSU with Bisect (import bisect, sys) --> very fast\n","x":-284,"y":-426,"width":250,"height":60},
+		{"id":"64f4b54605b71f60","type":"text","text":"Initialisation","x":-284,"y":-540,"width":250,"height":60},
+		{"id":"e3268483b8c6c5cb","type":"text","text":"sorted(list(map(int, input().split())))","x":95,"y":-540,"width":250,"height":60},
+		{"id":"d8434d7de18cf6a7","type":"text","text":"parent = list(range(n+1))","x":-671,"y":-570,"width":260,"height":60},
+		{"id":"31841aefdcc07a78","type":"text","text":"sys.setrecursionlimit(3 * 10**5)","x":-722,"y":-490,"width":311,"height":60},
+		{"id":"cd9980a84a39e6a9","type":"text","text":"List of parents for union-find","x":-940,"y":-575,"width":186,"height":60},
+		{"id":"9dfe844ddb65dd6b","type":"text","text":"getpar(u)","x":-231,"y":-660,"width":145,"height":53},
+		{"id":"2f51ddb81da20824","type":"text","text":"Returns the root parent of a node u","x":-603,"y":-691,"width":250,"height":60},
+		{"id":"205da1efa8935975","type":"text","text":"def getpar(u):  \n    if u < 0 or u == parent[u]:  \n        return u  \n    parent[u] = getpar(parent[u])  \n    return parent[u]","x":69,"y":-763,"width":210,"height":206},
+		{"id":"e9d57b1ac108cbd3","type":"text","text":"Used when we need to removed the already-used elements (for example when a ticket has been taken)","x":-337,"y":-920,"width":251,"height":165},
+		{"id":"48414fd2babf9310","type":"text","text":"defaultdict --> very fast","x":-556,"y":-63,"width":250,"height":60},
+		{"id":"88ce75f4b1679a56","type":"text","text":"default values for inexistant keys","x":-556,"y":80,"width":250,"height":60},
+		{"id":"bb80743aee6c7ec8","type":"text","text":"Example : when a customer comes, the value is +1 and if he goes out it's -1","x":-880,"y":107,"width":219,"height":133},
+		{"id":"149487518e4fb9a2","x":-126,"y":160,"width":166,"height":60,"type":"text","text":"Sort suffixes from a string"},
+		{"id":"e7b62cbdd6720ed2","x":-159,"y":20,"width":165,"height":60,"type":"text","text":"Suffix array"}
 	],
 	"edges":[
 		{"id":"749014ba853617b0","fromNode":"1f53c022d801ecca","fromSide":"left","toNode":"83268a88bd2b1adf","toSide":"right"},
@@ -44,6 +46,8 @@
 		{"id":"aea1872cd2a7c237","fromNode":"9dfe844ddb65dd6b","fromSide":"top","toNode":"e9d57b1ac108cbd3","toSide":"bottom"},
 		{"id":"3fd7e6ea779221ae","fromNode":"83268a88bd2b1adf","fromSide":"bottom","toNode":"48414fd2babf9310","toSide":"top"},
 		{"id":"0845d9e6527b6057","fromNode":"48414fd2babf9310","fromSide":"bottom","toNode":"88ce75f4b1679a56","toSide":"top"},
-		{"id":"a152e0aadf9ff0c1","fromNode":"88ce75f4b1679a56","fromSide":"left","toNode":"bb80743aee6c7ec8","toSide":"right"}
+		{"id":"a152e0aadf9ff0c1","fromNode":"88ce75f4b1679a56","fromSide":"left","toNode":"bb80743aee6c7ec8","toSide":"right"},
+		{"id":"b2b6e15d856e3ae5","fromNode":"e7b62cbdd6720ed2","fromSide":"bottom","toNode":"149487518e4fb9a2","toSide":"top"},
+		{"id":"346f7aecd3a9aac8","fromNode":"83268a88bd2b1adf","fromSide":"right","toNode":"e7b62cbdd6720ed2","toSide":"top"}
 	]
 }
