@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program Similarity Explorer</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        input { margin-bottom: 20px; padding: 10px; width: 300px; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f4f4f4; }
+        .tag { background-color: #e0f7fa; color: #00796b; padding: 5px; border-radius: 5px; margin-right: 5px; }
+        .button { background-color: #00796b; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer; }
+        .button:hover { background-color: #004d40; }
+    </style>
+</head>
+<body>
+    <h1>Program Similarity Explorer</h1>
+    <input type="text" id="search" placeholder="Search by tag..." onkeyup="search()">
+    <div id="results"></div>
+
+<script>
+    function search() {
+        const query = document.getElementById("search").value;
+
+        // Si rien n'est tapé, on ne lance pas la recherche
+        if (!query) {
+            document.getElementById("results").innerHTML = "";
+            return;
+        }
+
+        fetch(`/search?query=${query}`)
+            .then(response => {
+                if (!response.ok) {
+                    console.error('Erreur de réponse : ', response);
+                    throw new Error("Erreur de recherche");
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Résultats reçus:', data);
+
+                if (data.error) {
+                    document.getElementById("results").innerHTML = `<p>${data.error}</p>`;
+                    return;
+                }
+
+                let html = "<table><tr><th>File</th><th>Tags</th></tr>";
+                for (const [file, tags] of Object.entries(data)) {
+                    html += `<tr><td><a href="/similar/${file}" target="_blank">${file}</a></td><td>${tags.join(", ")}</td></tr>`;
+                }
+                html += "</table>";
+                document.getElementById("results").innerHTML = html;
+            })
+            .catch(error => {
+                console.error('Erreur JavaScript:', error);
+                document.getElementById("results").innerHTML = "<p>Erreur lors de la recherche. Veuillez réessayer.</p>";
+            });
+    }
+</script>
+</body>
+</html>

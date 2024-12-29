@@ -22,6 +22,12 @@ def extract_tags_and_todos(filepath):
                 break
     return tags
 
+def get_creation_time(filepath):
+    """
+    Récupère le temps de création d'un fichier.
+    """
+    return os.path.getctime(filepath)
+
 # Organise les fichiers par tags
 tags_dict = defaultdict(list)
 
@@ -41,7 +47,7 @@ for root, dirs, files in os.walk(source_dir):
             # Associe chaque fichier à ses tags
             for tag in tags:
                 relative_path = os.path.relpath(filepath, source_dir)
-                tags_dict[tag].append(relative_path)
+                tags_dict[tag].append((relative_path, get_creation_time(filepath)))
 
             # Classe les fichiers dans des dossiers A-Z
             first_letter = filename[0].upper()
@@ -58,12 +64,14 @@ for root, dirs, files in os.walk(source_dir):
 # Génère le tableau Markdown
 with open(output_file, "w", encoding="utf-8") as f:
     # En-tête du tableau
-    f.write("| Tag              | Fichiers associés           |\n")
-    f.write("|------------------|-----------------------------|\n")
+    f.write("| Tag              | Fichiers associés (triés par date) |\n")
+    f.write("|------------------|-----------------------------------|\n")
 
-    # Ajoute les fichiers par tag
+    # Ajoute les fichiers par tag triés par date de création
     for tag, files in sorted(tags_dict.items()):
-        file_list = ", ".join(files)
+        # Trier les fichiers par date de création
+        files_sorted = sorted(files, key=lambda x: x[1])
+        file_list = ", ".join([file[0] for file in files_sorted])
         f.write(f"| {tag:<16} | {file_list} |\n")
 
 print(f"Tableau des tags généré dans {output_file} !")
