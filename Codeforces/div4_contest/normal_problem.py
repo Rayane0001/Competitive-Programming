@@ -1,3 +1,5 @@
+# tags: implementation, strings
+
 t = int(input())
 for _ in range(t):
     a = input()

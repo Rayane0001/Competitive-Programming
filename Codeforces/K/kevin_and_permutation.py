@@ -1,4 +1,4 @@
-# tags: permutation, math
+# tags: brute force, greedy, implementation, math, number theory
 for _ in range(int(input())):
     n, k = map(int, input().split())  # Read n and k
     p = [0] * n  # Initialize permutation with zeros
