@@ -6,58 +6,93 @@
     <title>Program Similarity Explorer</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 20px; }
-        input { margin-bottom: 20px; padding: 10px; width: 300px; }
-        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        input, textarea, button { margin-bottom: 20px; padding: 10px; font-size: 16px; }
+        textarea { width: 100%; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
         th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
         th { background-color: #f4f4f4; }
         .tag { background-color: #e0f7fa; color: #00796b; padding: 5px; border-radius: 5px; margin-right: 5px; }
-        .button { background-color: #00796b; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer; }
+        .button { background-color: #00796b; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
         .button:hover { background-color: #004d40; }
+        .error { color: red; font-weight: bold; }
     </style>
 </head>
 <body>
     <h1>Program Similarity Explorer</h1>
-    <input type="text" id="search" placeholder="Search by tag..." onkeyup="search()">
-    <div id="results"></div>
 
-<script>
-    function search() {
-        const query = document.getElementById("search").value;
+    <!-- Recherche par tag -->
+    <h2>Rechercher des programmes</h2>
+    <label for="tagSearch">Recherche par tag :</label>
+    <input type="text" id="tagSearch" placeholder="Rechercher par tag..." onkeyup="searchTags()">
+    <div id="tagResults"></div>
 
-        // Si rien n'est tapé, on ne lance pas la recherche
-        if (!query) {
-            document.getElementById("results").innerHTML = "";
-            return;
-        }
+    <!-- Comparaison de code -->
+    <h2>Comparer un code</h2>
+    <label for="codeInput">Collez votre code ici :</label>
+    <textarea id="codeInput" rows="10" placeholder="Collez votre code ici..."></textarea>
+    <button class="button" onclick="findSimilar()">Valider</button>
+    <div id="codeResults"></div>
 
-        fetch(`/search?query=${query}`)
-            .then(response => {
-                if (!response.ok) {
-                    console.error('Erreur de réponse : ', response);
-                    throw new Error("Erreur de recherche");
-                }
-                return response.json();
+    <script>
+        function findSimilar() {
+            const code = document.getElementById("codeInput").value;
+
+            if (!code.trim()) {
+                alert("Veuillez coller un code pour continuer.");
+                return;
+            }
+
+            fetch('/find_similar', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ code }),
             })
+            .then(response => response.json())
             .then(data => {
-                console.log('Résultats reçus:', data);
+                const resultsDiv = document.getElementById("codeResults");
+                resultsDiv.innerHTML = "<h3>Programmes Similaires :</h3>";
 
-                if (data.error) {
-                    document.getElementById("results").innerHTML = `<p>${data.error}</p>`;
+                if (!data.similar || data.similar.length === 0) {
+                    resultsDiv.innerHTML += "<p>Aucun programme similaire trouvé.</p>";
                     return;
                 }
 
-                let html = "<table><tr><th>File</th><th>Tags</th></tr>";
-                for (const [file, tags] of Object.entries(data)) {
-                    html += `<tr><td><a href="/similar/${file}" target="_blank">${file}</a></td><td>${tags.join(", ")}</td></tr>`;
+                let html = "<table><tr><th>Fichier</th><th>Similitude</th></tr>";
+                for (const { file, similarity } of data.similar) {
+                    html += `<tr><td><a href="/similar/${encodeURIComponent(file)}" target="_blank">${file}</a></td><td>${(similarity * 100).toFixed(2)}%</td></tr>`;
                 }
                 html += "</table>";
-                document.getElementById("results").innerHTML = html;
+                resultsDiv.innerHTML += html;
             })
             .catch(error => {
-                console.error('Erreur JavaScript:', error);
-                document.getElementById("results").innerHTML = "<p>Erreur lors de la recherche. Veuillez réessayer.</p>";
+                console.error(error);
+                document.getElementById("codeResults").innerHTML = "<p class='error'>Erreur lors de la recherche.</p>";
             });
-    }
-</script>
+        }
+
+        function searchTags() {
+            const query = document.getElementById("tagSearch").value;
+
+            if (!query.trim()) {
+                document.getElementById("tagResults").innerHTML = "";
+                return;
+            }
+
+            fetch(`/search?query=${encodeURIComponent(query)}`)
+                .then(response => response.json())
+                .then(data => {
+                    let html = "<table><tr><th>Fichier</th><th>Tags</th></tr>";
+                    for (const [file, tags] of Object.entries(data)) {
+                        html += `<tr><td><a href="/similar/${encodeURIComponent(file)}" target="_blank">${file}</a></td><td>${tags.join(", ")}</td></tr>`;
+                    }
+                    html += "</table>";
+                    document.getElementById("tagResults").innerHTML = html;
+                })
+                .catch(error => {
+                    console.error(error);
+                    document.getElementById("tagResults").innerHTML = "<p class='error'>Erreur lors de la recherche.</p>";
+                });
+        }
+    </script>
 </body>
 </html>
