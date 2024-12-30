@@ -1,4 +1,3 @@
-# TODO : refaire
 t = int(input())
 for _ in range(t):
     n, k = map(int, input().split())
@@ -6,9 +5,9 @@ for _ in range(t):
     a.sort(reverse=True)
 
     sum_coins = 0
-    for x in a:
-        if sum_coins + x <= k:
-            sum_coins += x
+    for coins in a:
+        if sum_coins + coins <= k:
+            sum_coins += coins
         else:
             break
 
