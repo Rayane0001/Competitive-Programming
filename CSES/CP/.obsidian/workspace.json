@@ -15,9 +15,9 @@
               "state": {
                 "file": "Sorting and searching.canvas",
                 "viewState": {
-                  "x": 2.829311745150857,
-                  "y": 413.7988530140458,
-                  "zoom": -0.4
+                  "x": -180,
+                  "y": -340,
+                  "zoom": -0.7821372371440661
                 }
               },
               "icon": "lucide-layout-dashboard",
@@ -80,8 +80,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "8ee99cd7294f0c25",
@@ -168,7 +167,9 @@
   },
   "active": "5f0b65e3ecfba6ab",
   "lastOpenFiles": [
-    "Welcome.md",
-    "Sorting and searching.canvas"
+    "Untitled.canvas",
+    "2025-01-09.md",
+    "Sorting and searching.canvas",
+    "Welcome.md"
   ]
 }
