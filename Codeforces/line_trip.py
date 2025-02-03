@@ -2,18 +2,17 @@ import sys
 
 data = sys.stdin.read().strip().split()
 
-t, i = int(data[0]), 1
+t,i=int(data[0]), 1
 
 for _ in range(t):
-    n, x = int(data[i]), int(data[i + 1])
+    n,x = int(data[i]), int(data[i+1])
     i += 2
-    a = list(map(int, data[i:i + n]))
-    i += n
+    a = list(map(int, data[i:i+n]))
+    i+=n
 
-    a.sort()
-
-    max_gap = 0
     prev = 0
+    max_gap = 0
+
     for station in a:
         max_gap = max(max_gap, station - prev)
         prev = station
