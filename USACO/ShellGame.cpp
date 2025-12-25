@@ -1,6 +1,9 @@
 #include <algorithm>
+#include <array>
 #include <iostream>
 #include <vector>
+
+using namespace std;
 
 using namespace std;
 
