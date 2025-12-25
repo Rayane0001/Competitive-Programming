@@ -4,4 +4,6 @@ project(Competitive)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(Competitive
-        CSES/WeirdAlgorithm.cpp)
+        CSES/WeirdAlgorithm.cpp
+        USACO/MixingMilk.cpp
+        USACO/ShellGame.cpp)
