@@ -139,8 +139,6 @@ cython_debug/
 *.jar
 *.war
 *.ear
-*.class
-*.log
 *.ctxt
 *.project
 *.classpath
@@ -150,8 +148,39 @@ cython_debug/
 *.iml
 *.ipr
 *.iws
-*.idea/
+.idea/
 out/
-target/
-build/
 .qodo
+
+# Ajouts — fichiers privés / IDE / OS / clés / xml
+# Ignorer tous les fichiers XML (inclut coverage.xml, nosetests.xml, etc.)
+*.xml
+
+# IDEs (ajouts non présents ailleurs)
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Secrets / keys / certs
+*.pem
+*.key
+*.p12
+*.jks
+id_rsa
+id_rsa.pub
+
+# Environment files (extensions/locals supplémentaires)
+.env.*
+.env.local
+
+# Editor temporary files
+*~
+*.swp
+*.swo
+
+
+# End of additions
