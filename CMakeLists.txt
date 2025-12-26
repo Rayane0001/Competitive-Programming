@@ -11,5 +11,6 @@ foreach(SRC_FILE IN LISTS ALL_CPP_FILES)
     string(REGEX REPLACE "\\.cpp$" "" TARGET_NAME "${TARGET_NAME}")
     add_executable(${TARGET_NAME} ${SRC_FILE}
             USACO/SpeedingTicket.cpp
-            USACO/TheLostCow.cpp)
+            USACO/TheLostCow.cpp
+            USACO/TheBovineShuffle.cpp)
 endforeach()
