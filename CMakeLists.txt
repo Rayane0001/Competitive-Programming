@@ -12,5 +12,7 @@ foreach(SRC_FILE IN LISTS ALL_CPP_FILES)
     add_executable(${TARGET_NAME} ${SRC_FILE}
             USACO/SpeedingTicket.cpp
             USACO/TheLostCow.cpp
-            USACO/TheBovineShuffle.cpp)
+            USACO/TheBovineShuffle.cpp
+            CSES/Introductory/MissingNumber.cpp
+            CSES/Introductory/MissingNumberMath.cpp)
 endforeach()
