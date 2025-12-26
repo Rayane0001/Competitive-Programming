@@ -14,5 +14,6 @@ foreach(SRC_FILE IN LISTS ALL_CPP_FILES)
             USACO/TheLostCow.cpp
             USACO/TheBovineShuffle.cpp
             CSES/Introductory/MissingNumber.cpp
-            CSES/Introductory/MissingNumberMath.cpp)
+            CSES/Introductory/MissingNumberMath.cpp
+            CSES/Introductory/Repetitions.cpp)
 endforeach()
