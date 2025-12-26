@@ -17,5 +17,6 @@ foreach(SRC_FILE IN LISTS ALL_CPP_FILES)
             CSES/Introductory/MissingNumberMath.cpp
             CSES/Introductory/Repetitions.cpp
             CSES/Introductory/IncreasingArray.cpp
-            CSES/Introductory/Permutations.cpp)
+            CSES/Introductory/Permutations.cpp
+            "CSES/Introductory/Number Spiral.cpp")
 endforeach()
