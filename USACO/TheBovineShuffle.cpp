@@ -24,7 +24,8 @@ int main() {
     vector<int> current = random;
     for (int i = 0; i < 3; i++) {
         vector<int> temp(nb_cows);
-        for (int j = 0; j < nb_cows; j++) {
+        for (int j = 0; j
+            < nb_cows; j++) {
             temp[j] = current[shuffle[j]];
         }
         current = temp;
