@@ -20,5 +20,9 @@ foreach(SRC_FILE IN LISTS ALL_CPP_FILES)
             CSES/Introductory/Permutations.cpp
             "CSES/Introductory/Number Spiral.cpp"
             CSES/Introductory/TwoSets.cpp
-            "CSES/Introductory/BitStrings .cpp")
+            "CSES/Introductory/BitStrings .cpp"
+            AtCoder/BeginnerContest438/A.cpp
+            AtCoder/BeginnerContest438/B.cpp
+            AtCoder/BeginnerContest438/C.cpp
+            AtCoder/BeginnerContest438/D.cpp)
 endforeach()
