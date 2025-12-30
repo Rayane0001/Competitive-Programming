@@ -29,5 +29,6 @@ foreach(SRC_FILE IN LISTS ALL_CPP_FILES)
             "Codeforces/Contests/GoodBye2025/Impost or Sus.cpp"
             USACO/TheBucketList.cpp
             USACO/MeasuringTraffic.cpp
-            "AtCoder/Beginner Contest 436/o-padding.cpp")
+            "AtCoder/Beginner Contest 436/o-padding.cpp"
+            "AtCoder/Beginner Contest 436/Magic Square.cpp")
 endforeach()
